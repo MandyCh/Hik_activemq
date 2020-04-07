@@ -379,7 +379,7 @@ function connect() {
         var user = "zy";                    // 连接用户名
         var password = "Zy123";             // 连接密码
 
-        destination = "linka";
+        destination = "linka";              // 监听的topic,在服务器端建立
 
         client = new Messaging.Client(host, Number(port), clientId);
         client.onConnect = onConnect;
@@ -396,7 +396,6 @@ function connect() {
         return false;
     }
 }
-
 var onConnect = function (frame) {
     console.log("connected to MQTT");
     client.subscribe(destination);
