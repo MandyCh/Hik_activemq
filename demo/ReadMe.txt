@@ -1,0 +1,3 @@
+1、demo_window_simple_playback.html、demo_window_simple_preview.html为简化版demo，可在此基础上开发；
+2、demo_window_integration_preview.html、demo_window_integration_playback.html为包含了所有功能的demo，可参照此demo来开发、验证功能、排查问题；
+3、其它js文件为demo依赖文件；
