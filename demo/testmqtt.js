@@ -17,7 +17,7 @@ $(".destroy").click(destroyWnd);
 
 var clickTimeId;
 // 摄像头双击预览 mode-1
-wrapper.ondblclick = function (e) {
+wrapper.onclick = function (e) {
     clearTimeout(clickTimeId); // 解决单双击冲突
 
     if (e.target.nodeName.toLowerCase() === "img") {
@@ -39,7 +39,7 @@ wrapper.ondblclick = function (e) {
 };
 
 // 摄像头单击回放 mode-1
-wrapper.onclick = function (e) {
+wrapper.ondblclick = function (e) {
     clearTimeout(clickTimeId);
     clickTimeId = setTimeout(function () {
         if (e.target.nodeName.toLowerCase() === "img") {
@@ -64,7 +64,6 @@ var pubKey = "";
 // 创建播放实例
 function initPlugin(mode, wndId) {
     console.log(wndId);
-
     oWebControl = new WebControl({
         szPluginContainer: wndId, // 指定容器id
         iServicePortStart: 15900, // 指定起止端口号，建议使用该值
@@ -416,14 +415,14 @@ function onMessageArrived(message) {
     var res = JSON.parse(message.payloadString);
     if (res.action === "preview") {
         if (!oWebControl) {
-            initPlugin(0);
+            initPlugin(0, 'play');
         }
         setTimeout(function () {
             preview(res.cameraIndex);
         }, 1000);
     } else if (res.action === "recorde") {
         if (!oWebControl) {
-            initPlugin(1);
+            initPlugin(1, 'record');
         }
         setTimeout(function () {
             playback(res.cameraIndex);
